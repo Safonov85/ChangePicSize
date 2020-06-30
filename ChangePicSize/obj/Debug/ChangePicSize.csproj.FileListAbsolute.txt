@@ -1,0 +1,9 @@
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\bin\Debug\ChangePicSize.exe.config
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\bin\Debug\ChangePicSize.exe
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\bin\Debug\ChangePicSize.pdb
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.csprojAssemblyReference.cache
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.Form1.resources
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.Properties.Resources.resources
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.csproj.GenerateResource.cache
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.exe
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.pdb
