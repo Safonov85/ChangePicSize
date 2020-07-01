@@ -6,14 +6,22 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ChangePicSize
 {
     public class ResizePicture
     {
+        private bool rotateFlip = false;
 
         public Bitmap ResizeImage(Image image, int width, int height)
         {
+            if(image.Width < image.Height)
+            {
+                image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                rotateFlip = true;
+            }
+
             var destRect = new Rectangle(0, 0, width, height);
             var destImage = new Bitmap(width, height);
 
@@ -32,6 +40,12 @@ namespace ChangePicSize
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
                     graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
+            }
+
+            if(rotateFlip == true)
+            {
+                destImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                rotateFlip = false;
             }
 
             return destImage;

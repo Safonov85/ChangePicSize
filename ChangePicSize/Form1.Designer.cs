@@ -37,11 +37,12 @@
             this.AboutButton = new System.Windows.Forms.Button();
             this.QualityTextBox = new System.Windows.Forms.TextBox();
             this.QualityLabel = new System.Windows.Forms.Label();
+            this.ClearListButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LoadPicButton
             // 
-            this.LoadPicButton.Location = new System.Drawing.Point(28, 29);
+            this.LoadPicButton.Location = new System.Drawing.Point(40, 27);
             this.LoadPicButton.Name = "LoadPicButton";
             this.LoadPicButton.Size = new System.Drawing.Size(164, 81);
             this.LoadPicButton.TabIndex = 0;
@@ -52,9 +53,9 @@
             // ResizePicturesButton
             // 
             this.ResizePicturesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ResizePicturesButton.Location = new System.Drawing.Point(28, 129);
+            this.ResizePicturesButton.Location = new System.Drawing.Point(253, 27);
             this.ResizePicturesButton.Name = "ResizePicturesButton";
-            this.ResizePicturesButton.Size = new System.Drawing.Size(164, 100);
+            this.ResizePicturesButton.Size = new System.Drawing.Size(164, 81);
             this.ResizePicturesButton.TabIndex = 1;
             this.ResizePicturesButton.Text = "RESIZE";
             this.ResizePicturesButton.UseVisualStyleBackColor = false;
@@ -67,7 +68,7 @@
             "Small",
             "Medium",
             "Large"});
-            this.ResizeLevelCombobox.Location = new System.Drawing.Point(16, 297);
+            this.ResizeLevelCombobox.Location = new System.Drawing.Point(504, 216);
             this.ResizeLevelCombobox.Name = "ResizeLevelCombobox";
             this.ResizeLevelCombobox.Size = new System.Drawing.Size(164, 28);
             this.ResizeLevelCombobox.TabIndex = 1;
@@ -75,7 +76,7 @@
             // ResizeToLabel
             // 
             this.ResizeToLabel.AutoSize = true;
-            this.ResizeToLabel.Location = new System.Drawing.Point(12, 342);
+            this.ResizeToLabel.Location = new System.Drawing.Point(462, 125);
             this.ResizeToLabel.Name = "ResizeToLabel";
             this.ResizeToLabel.Size = new System.Drawing.Size(84, 20);
             this.ResizeToLabel.TabIndex = 3;
@@ -85,7 +86,7 @@
             // 
             this.PicturesListbox.FormattingEnabled = true;
             this.PicturesListbox.ItemHeight = 20;
-            this.PicturesListbox.Location = new System.Drawing.Point(270, 41);
+            this.PicturesListbox.Location = new System.Drawing.Point(27, 125);
             this.PicturesListbox.Name = "PicturesListbox";
             this.PicturesListbox.Size = new System.Drawing.Size(420, 284);
             this.PicturesListbox.TabIndex = 4;
@@ -93,9 +94,9 @@
             // CancelButton
             // 
             this.CancelButton.BackColor = System.Drawing.Color.MistyRose;
-            this.CancelButton.Location = new System.Drawing.Point(285, 365);
+            this.CancelButton.Location = new System.Drawing.Point(535, 25);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(227, 108);
+            this.CancelButton.Size = new System.Drawing.Size(118, 85);
             this.CancelButton.TabIndex = 5;
             this.CancelButton.Text = "CANCEL (not working yet)";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -104,7 +105,7 @@
             // AboutButton
             // 
             this.AboutButton.BackColor = System.Drawing.SystemColors.Menu;
-            this.AboutButton.Location = new System.Drawing.Point(12, 466);
+            this.AboutButton.Location = new System.Drawing.Point(623, 466);
             this.AboutButton.Name = "AboutButton";
             this.AboutButton.Size = new System.Drawing.Size(80, 48);
             this.AboutButton.TabIndex = 6;
@@ -114,7 +115,7 @@
             // 
             // QualityTextBox
             // 
-            this.QualityTextBox.Location = new System.Drawing.Point(98, 250);
+            this.QualityTextBox.Location = new System.Drawing.Point(567, 178);
             this.QualityTextBox.Name = "QualityTextBox";
             this.QualityTextBox.Size = new System.Drawing.Size(68, 26);
             this.QualityTextBox.TabIndex = 7;
@@ -123,17 +124,28 @@
             // QualityLabel
             // 
             this.QualityLabel.AutoSize = true;
-            this.QualityLabel.Location = new System.Drawing.Point(31, 253);
+            this.QualityLabel.Location = new System.Drawing.Point(500, 181);
             this.QualityLabel.Name = "QualityLabel";
             this.QualityLabel.Size = new System.Drawing.Size(61, 20);
             this.QualityLabel.TabIndex = 8;
             this.QualityLabel.Text = "Quality:";
             // 
+            // ClearListButton
+            // 
+            this.ClearListButton.Location = new System.Drawing.Point(81, 433);
+            this.ClearListButton.Name = "ClearListButton";
+            this.ClearListButton.Size = new System.Drawing.Size(285, 64);
+            this.ClearListButton.TabIndex = 9;
+            this.ClearListButton.Text = "CLEAR LIST";
+            this.ClearListButton.UseVisualStyleBackColor = true;
+            this.ClearListButton.Click += new System.EventHandler(this.ClearListButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 526);
+            this.ClientSize = new System.Drawing.Size(715, 526);
+            this.Controls.Add(this.ClearListButton);
             this.Controls.Add(this.QualityLabel);
             this.Controls.Add(this.QualityTextBox);
             this.Controls.Add(this.AboutButton);
@@ -161,6 +173,7 @@
         private System.Windows.Forms.Button AboutButton;
         private System.Windows.Forms.TextBox QualityTextBox;
         private System.Windows.Forms.Label QualityLabel;
+        private System.Windows.Forms.Button ClearListButton;
     }
 }
 

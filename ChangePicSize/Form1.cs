@@ -14,7 +14,7 @@ namespace ChangePicSize
 {
     public partial class Form1 : Form
     {
-        int item = 0;
+        int item = 1;
         List<Image> pictureList = new List<Image>();
         string pathSave;
         Point Large = new Point(1280, 1024);
@@ -24,11 +24,20 @@ namespace ChangePicSize
             InitializeComponent();
             ResizeLevelCombobox.SelectedItem = 1;
             ResizeToLabel.Text = "Resize To: " + Large.X +" x " + Large.Y;
+
+
+            QualityLabel.Visible = false;
+            ResizeLevelCombobox.Visible = false;
+            QualityTextBox.Visible = false;
         }
 
         private void LoadPicButton_Click(object sender, EventArgs e)
         {
-            
+            if(pictureList == null)
+            {
+                pictureList = new List<Image>();
+            }
+
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Image Files(*.jpg;)|*.jpg;";
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -38,6 +47,11 @@ namespace ChangePicSize
             {
                 try
                 {
+                    if(dialog.FileNames.Length > 100)
+                    {
+                        MessageBox.Show("You have too many files selected. The maximum file amount is 100");
+                        return;
+                    }
                     if(pictureList.Count > 0)
                     {
                         pictureList.Clear();
@@ -108,11 +122,11 @@ namespace ChangePicSize
 
             try
             {
-                //if(!Directory.Exists(pathSave + "\\mindre"))
-                //{
-                //    Directory.CreateDirectory(pathSave + "\\mindre");
-                //}
-                
+                if (!Directory.Exists(pathSave + "\\mindre"))
+                {
+                    Directory.CreateDirectory(pathSave + "\\mindre");
+                }
+
                 int count = 0;
 
                 //ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
@@ -182,6 +196,17 @@ namespace ChangePicSize
                 }
             }
             return null;
+        }
+
+        private void ClearListButton_Click(object sender, EventArgs e)
+        {
+            pictureList.Clear();
+            PicturesListbox.Items.Clear();
+            //pictureList = null;
+
+            int ident = GC.GetGeneration(pictureList);
+            GC.Collect(ident, GCCollectionMode.Forced);
+            
         }
     }
 }
