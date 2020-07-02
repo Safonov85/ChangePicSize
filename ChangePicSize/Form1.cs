@@ -18,25 +18,34 @@ namespace ChangePicSize
         List<Image> pictureList = new List<Image>();
         string pathSave;
         Point Large = new Point(1280, 1024);
+        Point ratio1x1Large = new Point(1280, 1280);
 
         public Form1()
         {
             InitializeComponent();
             ResizeLevelCombobox.SelectedItem = 1;
-            ResizeToLabel.Text = "Resize To: " + Large.X +" x " + Large.Y;
+            ResizeToLabel.Text = "Resize To: " + Large.X;
 
 
             QualityLabel.Visible = false;
             ResizeLevelCombobox.Visible = false;
             QualityTextBox.Visible = false;
+            CancelButton.Visible = false;
         }
 
         private void LoadPicButton_Click(object sender, EventArgs e)
         {
+            if(PicturesListbox.Items.Count > 0)
+            {
+                MessageBox.Show("List contains pictures already. CLEAR LIST. Then try again.");
+                return;
+            }
+
             if(pictureList == null)
             {
                 pictureList = new List<Image>();
             }
+            
 
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Image Files(*.jpg;)|*.jpg;";
@@ -127,15 +136,21 @@ namespace ChangePicSize
                     Directory.CreateDirectory(pathSave + "\\mindre");
                 }
 
-                int count = 0;
+                if (Directory.GetFiles(pathSave + "\\mindre").Length > 0)
+                {
+                    //MessageBox.Show("Save folder contains files. It will overwrite them. Do you want to continue?");
 
-                //ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
-                //System.Drawing.Imaging.Encoder myEncoder =
-                //    System.Drawing.Imaging.Encoder.Quality;
-                //EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                    DialogResult result1 = MessageBox.Show("Save folder contains files. It will overwrite them. Do you want to continue?",
+                            "Important Question",
+                            MessageBoxButtons.YesNo);
+                    if (result1 == DialogResult.No)
+                    {
+                        return;
+                    }
+                    
+                }
 
-                //EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, QualityTextBox.Text);
-                //myEncoderParameters.Param[0] = myEncoderParameter;
+                int count = 1;
 
                 this.Text = "Re-size Picture (CONVERTING)";
 
@@ -144,7 +159,17 @@ namespace ChangePicSize
                 {
                     Image newImage;
                     ResizePicture resizePic = new ResizePicture();
-                    newImage = resizePic.ResizeImage(picture, Large.X, Large.Y);
+
+                    if(picture.Width == picture.Height)
+                    {
+                        newImage = resizePic.ResizeImage(picture, ratio1x1Large.X, ratio1x1Large.Y, rotateRightCheckBox.Checked);
+
+                    }
+                    else
+                    {
+                        newImage = resizePic.ResizeImage(picture, Large.X, Large.Y, rotateRightCheckBox.Checked);
+                    }
+
                     string pathExists = pathSave + "\\mindre\\newpic" + count + ".jpg";
 
                     //if(pathExists != "blah")
@@ -161,7 +186,7 @@ namespace ChangePicSize
 
                     newImage.Save(pathSave + "\\mindre\\newpic" + count + ".jpg", ImageFormat.Jpeg);
                     newImage.Dispose();
-                    PicturesListbox.Items[count] = PicturesListbox.Items[count] + " ✔";
+                    PicturesListbox.Items[count -1] = PicturesListbox.Items[count -1] + " ✔";
                     count++;
                 }
 
@@ -169,11 +194,12 @@ namespace ChangePicSize
 
 
             }
+
             catch(Exception expt)
             {
                 MessageBox.Show(expt.Message);
             }
-        }
+}
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
@@ -182,20 +208,7 @@ namespace ChangePicSize
 
         private void AboutButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Made by Mikhail Safonov. The maker of this app bears no responsibility for any damage that the use of this software may cause.");
-        }
-
-        private ImageCodecInfo GetEncoder(ImageFormat format)
-        {
-            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
-            foreach (ImageCodecInfo codec in codecs)
-            {
-                if (codec.FormatID == format.Guid)
-                {
-                    return codec;
-                }
-            }
-            return null;
+            MessageBox.Show("Made by Mikhail Safonov 2020. The maker of this app bears no responsibility for any damage that the use of this software may cause.");
         }
 
         private void ClearListButton_Click(object sender, EventArgs e)

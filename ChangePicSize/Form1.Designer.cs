@@ -38,6 +38,7 @@
             this.QualityTextBox = new System.Windows.Forms.TextBox();
             this.QualityLabel = new System.Windows.Forms.Label();
             this.ClearListButton = new System.Windows.Forms.Button();
+            this.rotateRightCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LoadPicButton
@@ -140,11 +141,22 @@
             this.ClearListButton.UseVisualStyleBackColor = true;
             this.ClearListButton.Click += new System.EventHandler(this.ClearListButton_Click);
             // 
+            // rotateRightCheckBox
+            // 
+            this.rotateRightCheckBox.AutoSize = true;
+            this.rotateRightCheckBox.Location = new System.Drawing.Point(466, 276);
+            this.rotateRightCheckBox.Name = "rotateRightCheckBox";
+            this.rotateRightCheckBox.Size = new System.Drawing.Size(197, 24);
+            this.rotateRightCheckBox.TabIndex = 10;
+            this.rotateRightCheckBox.Text = "Rotate Picture to Right";
+            this.rotateRightCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(715, 526);
+            this.Controls.Add(this.rotateRightCheckBox);
             this.Controls.Add(this.ClearListButton);
             this.Controls.Add(this.QualityLabel);
             this.Controls.Add(this.QualityTextBox);
@@ -174,6 +186,7 @@
         private System.Windows.Forms.TextBox QualityTextBox;
         private System.Windows.Forms.Label QualityLabel;
         private System.Windows.Forms.Button ClearListButton;
+        private System.Windows.Forms.CheckBox rotateRightCheckBox;
     }
 }
 
