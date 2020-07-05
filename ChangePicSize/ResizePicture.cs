@@ -16,11 +16,11 @@ namespace ChangePicSize
 
         public Bitmap ResizeImage(Image image, int width, int height, bool rotateRight)
         {
-            if(image.Width < image.Height)
-            {
-                image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                rotateFlip = true;
-            }
+            //if(image.Width < image.Height)
+            //{
+            //    image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            //    rotateFlip = true;
+            //}
 
             var destRect = new Rectangle(0, 0, width, height);
             var destImage = new Bitmap(width, height);
@@ -42,11 +42,11 @@ namespace ChangePicSize
                 }
             }
 
-            if(rotateFlip == true)
-            {
-                destImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                rotateFlip = false;
-            }
+            //if(rotateFlip == true)
+            //{
+            //    destImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            //    rotateFlip = false;
+            //}
 
             if(rotateRight == true)
             {
