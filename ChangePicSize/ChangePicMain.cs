@@ -18,12 +18,15 @@ namespace ChangePicSize
     {
         int item = 1;
         List<Image> pictureList = new List<Image>();
+        Dictionary<Image, string> pictureDict = new Dictionary<Image, string>();
         string pathSave;
         Point Large = new Point(1280, 1024);
         Point ratio1x1Large = new Point(1280, 1280);
         Point LargeCorrectAspectRatio;
-        int processComplete = 0;
+        System.Int32 processComplete = 0;
         float getPercent;
+
+        
 
         BackgroundWorker bgWorker = new BackgroundWorker();
 
@@ -53,7 +56,6 @@ namespace ChangePicSize
             {
                 pictureList = new List<Image>();
             }
-            
 
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Image Files(*.jpg;)|*.jpg;";
@@ -62,7 +64,6 @@ namespace ChangePicSize
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-
 
                 try
                 {
@@ -126,7 +127,6 @@ namespace ChangePicSize
 
         void LoadImagesIntoList(OpenFileDialog dialog, int item)
         {
-
 
             // ACTUAL FILES ADDED TO IMAGE LIST
             foreach (var file in dialog.FileNames)
@@ -257,6 +257,19 @@ namespace ChangePicSize
 
         private async void ChangePicDragNdrop_DragDrop(object sender, DragEventArgs e)
         {
+            
+
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            
+
+            if(pictureDict.Count > 0)
+            {
+                //pictureList.Clear();
+                pictureDict.Clear();
+            }
+
+            pathSave = Path.GetDirectoryName(files[0]);
+
             if (Directory.Exists(pathSave + "\\mindre"))
             {
                 DialogResult dialogYesNo = MessageBox.Show("Save folder contains files. It will overwrite them. Do you want to continue?",
@@ -268,34 +281,27 @@ namespace ChangePicSize
                 }
             }
 
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-
-            if(pictureList.Count > 0)
-            {
-                pictureList.Clear();
-            }
-
             LiveUpdateProgressBar.Visible = true;
             ProgressLabel.Visible = true;
 
             ProgressLabel.Text = "Loading pictures...";
 
-            pathSave = Path.GetDirectoryName(files[0]);
 
-            await Loadfiles(files);
+            await LoadfilesAsync(files);
 
             LiveUpdateProgressBar.Value = 50;
 
             ProgressLabel.Text = "Converting pictures...";
 
-            await ConvertFiles();
+            await ConvertFilesAsync();
 
             ProgressLabel.Text = "Done";
             Thread.Sleep(1000);
             ProgressLabel.Visible = false;
             LiveUpdateProgressBar.Visible = false;
             LiveUpdateProgressBar.Value = 0;
-            ClearListFromMemory();
+            //ClearListFromMemory();
+            ClearDictFromMemory();
         }
 
         void ClearListFromMemory()
@@ -306,23 +312,32 @@ namespace ChangePicSize
             GC.Collect(ident, GCCollectionMode.Forced);
         }
 
+        void ClearDictFromMemory()
+        {
+            pictureDict.Clear();
+
+            int ident = GC.GetGeneration(pictureDict);
+            GC.Collect(ident, GCCollectionMode.Forced);
+        }
+
         // LOADING PICTURE FILES
-        public async Task Loadfiles(string[] files)
+        public async Task LoadfilesAsync(string[] files)
         {
             // IProgress<LiveReport> progress // parameter
 
             await Task.Run(() =>
             {
 
-                try
-                {
-                    processComplete = 0;
-                    getPercent = (100f / (float)files.Length) / 2;
+            try
+            {
+                processComplete = 0;
+                getPercent = (100f / (float)files.Length) / 2;
 
-                    // ACTUAL FILES ADDED TO IMAGE LIST
-                    foreach (var file in files)
-                    {
-                        pictureList.Add(Image.FromFile(file));
+                // ACTUAL FILES ADDED TO IMAGE LIST
+                foreach (var file in files)
+                {
+                    //pictureList.Add(Image.FromFile(file));
+                    pictureDict.Add(Image.FromFile(file), file);
 
                         processComplete += (int)getPercent;
 
@@ -341,7 +356,7 @@ namespace ChangePicSize
         }
 
         // CONVERTING PICTURE FILES
-        public async Task ConvertFiles()
+        public async Task ConvertFilesAsync()
         {
             await Task.Run(() =>
             {
@@ -364,22 +379,51 @@ namespace ChangePicSize
                     // Kills 'Task' process because Label is outside of task preformance(part of GUI)
                     //ProgressLabel.Text = "Converting...";
 
-                    foreach (var picture in pictureList)
+                    //    --- List (Image) ---
+                    //foreach (var picture in pictureList)
+                    //{
+                    //    Image newImage;
+                    //    ResizePicture resizePic = new ResizePicture();
+                    //    LargeCorrectAspectRatio.X = GetProperScaleRatio.ScaleDownRightRatio(picture.Width, picture.Height).X;
+                    //    LargeCorrectAspectRatio.Y = GetProperScaleRatio.ScaleDownRightRatio(picture.Width, picture.Height).Y;
+
+
+                    //    newImage = resizePic.ResizeImage(picture, LargeCorrectAspectRatio.X, LargeCorrectAspectRatio.Y, rotateRightCheckBox.Checked);
+
+                    //    newImage.Save(pathSave + "\\mindre\\newPic" + count + ".jpg", ImageFormat.Jpeg);
+                    //    newImage.Dispose();
+
+                    //    processComplete += (int)getPercent;
+
+                    //    if(processComplete < 100)
+                    //    {
+                    //        LiveUpdateProgressBar.Invoke((Action)(() => LiveUpdateProgressBar.Value = processComplete));
+                    //    }
+
+                    //    count++;
+                    //}
+
+
+                    //  --- Dictionary (Image and string) ---
+
+                    foreach (var picture in pictureDict)
                     {
                         Image newImage;
                         ResizePicture resizePic = new ResizePicture();
-                        LargeCorrectAspectRatio.X = GetProperScaleRatio.ScaleDownRightRatio(picture.Width, picture.Height).X;
-                        LargeCorrectAspectRatio.Y = GetProperScaleRatio.ScaleDownRightRatio(picture.Width, picture.Height).Y;
+                        LargeCorrectAspectRatio.X = GetProperScaleRatio.ScaleDownRightRatio(picture.Key.Width, picture.Key.Height).X;
+                        LargeCorrectAspectRatio.Y = GetProperScaleRatio.ScaleDownRightRatio(picture.Key.Width, picture.Key.Height).Y;
 
 
-                        newImage = resizePic.ResizeImage(picture, LargeCorrectAspectRatio.X, LargeCorrectAspectRatio.Y, rotateRightCheckBox.Checked);
+                        newImage = resizePic.ResizeImage(picture.Key, LargeCorrectAspectRatio.X, LargeCorrectAspectRatio.Y, rotateRightCheckBox.Checked);
 
-                        newImage.Save(pathSave + "\\mindre\\newPic" + count + ".jpg", ImageFormat.Jpeg);
+                        string fileName = Path.GetFileNameWithoutExtension(picture.Value);
+
+                        newImage.Save(pathSave + "\\mindre\\" + fileName + "_m.jpg", ImageFormat.Jpeg);
                         newImage.Dispose();
 
                         processComplete += (int)getPercent;
 
-                        if(processComplete < 100)
+                        if (processComplete < 100)
                         {
                             LiveUpdateProgressBar.Invoke((Action)(() => LiveUpdateProgressBar.Value = processComplete));
                         }
