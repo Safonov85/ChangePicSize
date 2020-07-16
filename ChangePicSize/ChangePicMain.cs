@@ -270,16 +270,16 @@ namespace ChangePicSize
 
             pathSave = Path.GetDirectoryName(files[0]);
 
-            if (Directory.Exists(pathSave + "\\mindre"))
-            {
-                DialogResult dialogYesNo = MessageBox.Show("Save folder contains files. It will overwrite them. Do you want to continue?",
-                            "Important Question",
-                            MessageBoxButtons.YesNo);
-                if (dialogYesNo == DialogResult.No)
-                {
-                    return;
-                }
-            }
+            //if (Directory.Exists(pathSave + "\\mindre"))
+            //{
+            //    DialogResult dialogYesNo = MessageBox.Show("Save folder contains files. It will overwrite them. Do you want to continue?",
+            //                "Important Question",
+            //                MessageBoxButtons.YesNo);
+            //    if (dialogYesNo == DialogResult.No)
+            //    {
+            //        return;
+            //    }
+            //}
 
             LiveUpdateProgressBar.Visible = true;
             ProgressLabel.Visible = true;
@@ -301,6 +301,8 @@ namespace ChangePicSize
             LiveUpdateProgressBar.Visible = false;
             LiveUpdateProgressBar.Value = 0;
             //ClearListFromMemory();
+
+            // Removes Usage From RAM !!!!
             ClearDictFromMemory();
         }
 
@@ -364,10 +366,40 @@ namespace ChangePicSize
                 try
                 {
                     int count = 1;
+                    string newPathFolder = "\\mindre\\";
 
-                    if (!Directory.Exists(pathSave + "\\mindre"))
+                    if (!Directory.Exists(pathSave + "\\mindre\\"))
                     {
-                        Directory.CreateDirectory(pathSave + "\\mindre");
+                        Directory.CreateDirectory(pathSave + "\\mindre\\");
+                    }
+                    else
+                    {
+                        if(!Directory.Exists(pathSave + "\\mindre1\\"))
+                        {
+                            Directory.CreateDirectory(pathSave + "\\mindre1\\");
+                            newPathFolder = "\\mindre1\\";
+                        }
+                        else
+                        {
+                            if (!Directory.Exists(pathSave + "\\mindre2\\"))
+                            {
+                                Directory.CreateDirectory(pathSave + "\\mindre2\\");
+                                newPathFolder = "\\mindre2\\";
+                            }
+                            else
+                            {
+                                if (!Directory.Exists(pathSave + "\\mindre3\\"))
+                                {
+                                    Directory.CreateDirectory(pathSave + "\\mindre3\\");
+                                    newPathFolder = "\\mindre3\\";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("You have reached the maximum amount of folders to create in your designated path. Please move or remove them and try again.");
+                                    return;
+                                }
+                            }
+                        }
                     }
                     //else
                     //{
@@ -418,7 +450,7 @@ namespace ChangePicSize
 
                         string fileName = Path.GetFileNameWithoutExtension(picture.Value);
 
-                        newImage.Save(pathSave + "\\mindre\\" + fileName + "_m.jpg", ImageFormat.Jpeg);
+                        newImage.Save(pathSave + newPathFolder + fileName + "_m.jpg", ImageFormat.Jpeg);
                         newImage.Dispose();
 
                         processComplete += (int)getPercent;
