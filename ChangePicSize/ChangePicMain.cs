@@ -26,8 +26,8 @@ namespace ChangePicSize
         System.Int32 processComplete = 0;
         float getPercent;
 
+        private bool filesProccessed = false;
         
-
         BackgroundWorker bgWorker = new BackgroundWorker();
 
         public ChangePicMain()
@@ -257,53 +257,57 @@ namespace ChangePicSize
 
         private async void ChangePicDragNdrop_DragDrop(object sender, DragEventArgs e)
         {
-            
-
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            
-
-            if(pictureDict.Count > 0)
+            if (filesProccessed == false)
             {
-                //pictureList.Clear();
-                pictureDict.Clear();
+                filesProccessed = true;
+
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+
+
+                if (pictureDict.Count > 0)
+                {
+                    //pictureList.Clear();
+                    pictureDict.Clear();
+                }
+
+                pathSave = Path.GetDirectoryName(files[0]);
+
+                //if (Directory.Exists(pathSave + "\\mindre"))
+                //{
+                //    DialogResult dialogYesNo = MessageBox.Show("Save folder contains files. It will overwrite them. Do you want to continue?",
+                //                "Important Question",
+                //                MessageBoxButtons.YesNo);
+                //    if (dialogYesNo == DialogResult.No)
+                //    {
+                //        return;
+                //    }
+                //}
+
+                LiveUpdateProgressBar.Visible = true;
+                ProgressLabel.Visible = true;
+
+                ProgressLabel.Text = "Loading pictures...";
+
+
+                await LoadfilesAsync(files);
+
+                LiveUpdateProgressBar.Value = 50;
+
+                ProgressLabel.Text = "Converting pictures...";
+
+                await ConvertFilesAsync();
+
+                ProgressLabel.Text = "Done";
+                Thread.Sleep(1000);
+                ProgressLabel.Visible = false;
+                LiveUpdateProgressBar.Visible = false;
+                LiveUpdateProgressBar.Value = 0;
+                //ClearListFromMemory();
+
+                // Removes Usage From RAM !!!!
+                ClearDictFromMemory();
+                filesProccessed = false;
             }
-
-            pathSave = Path.GetDirectoryName(files[0]);
-
-            //if (Directory.Exists(pathSave + "\\mindre"))
-            //{
-            //    DialogResult dialogYesNo = MessageBox.Show("Save folder contains files. It will overwrite them. Do you want to continue?",
-            //                "Important Question",
-            //                MessageBoxButtons.YesNo);
-            //    if (dialogYesNo == DialogResult.No)
-            //    {
-            //        return;
-            //    }
-            //}
-
-            LiveUpdateProgressBar.Visible = true;
-            ProgressLabel.Visible = true;
-
-            ProgressLabel.Text = "Loading pictures...";
-
-
-            await LoadfilesAsync(files);
-
-            LiveUpdateProgressBar.Value = 50;
-
-            ProgressLabel.Text = "Converting pictures...";
-
-            await ConvertFilesAsync();
-
-            ProgressLabel.Text = "Done";
-            Thread.Sleep(1000);
-            ProgressLabel.Visible = false;
-            LiveUpdateProgressBar.Visible = false;
-            LiveUpdateProgressBar.Value = 0;
-            //ClearListFromMemory();
-
-            // Removes Usage From RAM !!!!
-            ClearDictFromMemory();
         }
 
         void ClearListFromMemory()

@@ -14,6 +14,7 @@ namespace ChangePicSize
     {
         private bool rotateFlip = false;
 
+
         public Bitmap ResizeImage(Image image, int width, int height, bool rotateRight)
         {
             //if(image.Width < image.Height)
