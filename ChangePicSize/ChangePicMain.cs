@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChangePicSize.Properties;
 
 namespace ChangePicSize
 {
@@ -42,6 +43,9 @@ namespace ChangePicSize
             QualityTextBox.Visible = false;
             CancelButton.Visible = false;
             //DropSignLabel.Text = "";
+
+            // Settings Load
+            rotateRightCheckBox.Checked = Settings.Default.Rotate90Right;
         }
 
         private void LoadPicButton_Click(object sender, EventArgs e)

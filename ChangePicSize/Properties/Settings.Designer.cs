@@ -12,7 +12,7 @@ namespace ChangePicSize.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,10 +25,10 @@ namespace ChangePicSize.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Resolution {
+        [global::System.Configuration.DefaultSettingValueAttribute("1280")]
+        public int Resolution {
             get {
-                return ((string)(this["Resolution"]));
+                return ((int)(this["Resolution"]));
             }
             set {
                 this["Resolution"] = value;
@@ -37,10 +37,10 @@ namespace ChangePicSize.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Quality {
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int Quality {
             get {
-                return ((string)(this["Quality"]));
+                return ((int)(this["Quality"]));
             }
             set {
                 this["Quality"] = value;
@@ -49,7 +49,7 @@ namespace ChangePicSize.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute(".jpg")]
         public string FileType {
             get {
                 return ((string)(this["FileType"]));
@@ -61,13 +61,25 @@ namespace ChangePicSize.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Rotate {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Rotate90Right {
             get {
-                return ((string)(this["Rotate"]));
+                return ((bool)(this["Rotate90Right"]));
             }
             set {
-                this["Rotate"] = value;
+                this["Rotate90Right"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SavePath {
+            get {
+                return ((string)(this["SavePath"]));
+            }
+            set {
+                this["SavePath"] = value;
             }
         }
     }

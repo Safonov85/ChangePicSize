@@ -46,6 +46,7 @@
             this.LiveUpdateProgressBar = new System.Windows.Forms.ProgressBar();
             this.DropSignLabel = new System.Windows.Forms.Label();
             this.ChangePicOldStylePage = new System.Windows.Forms.TabPage();
+            this.SettingsTabPage = new System.Windows.Forms.TabPage();
             this.ChangePicTabControlPage.SuspendLayout();
             this.ChangePicDragNdrop.SuspendLayout();
             this.ChangePicOldStylePage.SuspendLayout();
@@ -167,6 +168,7 @@
             // 
             this.ChangePicTabControlPage.Controls.Add(this.ChangePicDragNdrop);
             this.ChangePicTabControlPage.Controls.Add(this.ChangePicOldStylePage);
+            this.ChangePicTabControlPage.Controls.Add(this.SettingsTabPage);
             this.ChangePicTabControlPage.Location = new System.Drawing.Point(0, 0);
             this.ChangePicTabControlPage.Name = "ChangePicTabControlPage";
             this.ChangePicTabControlPage.SelectedIndex = 0;
@@ -254,6 +256,16 @@
             this.ChangePicOldStylePage.Text = "Manual Load \'n Save";
             this.ChangePicOldStylePage.UseVisualStyleBackColor = true;
             // 
+            // SettingsTabPage
+            // 
+            this.SettingsTabPage.Location = new System.Drawing.Point(4, 29);
+            this.SettingsTabPage.Name = "SettingsTabPage";
+            this.SettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.SettingsTabPage.Size = new System.Drawing.Size(729, 540);
+            this.SettingsTabPage.TabIndex = 2;
+            this.SettingsTabPage.Text = "Settings";
+            this.SettingsTabPage.UseVisualStyleBackColor = true;
+            // 
             // ChangePicMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -292,6 +304,7 @@
         private System.Windows.Forms.Label DropSignLabel;
         private System.Windows.Forms.Label ProgressLabel;
         private System.Windows.Forms.ProgressBar LiveUpdateProgressBar;
+        private System.Windows.Forms.TabPage SettingsTabPage;
     }
 }
 

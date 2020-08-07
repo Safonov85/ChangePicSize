@@ -2,16 +2,19 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ChangePicSize.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Resolution" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="Resolution" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1280</Value>
     </Setting>
-    <Setting Name="Quality" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="Quality" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="FileType" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">.jpg</Value>
     </Setting>
-    <Setting Name="Rotate" Type="System.String" Scope="User">
+    <Setting Name="Rotate90Right" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SavePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

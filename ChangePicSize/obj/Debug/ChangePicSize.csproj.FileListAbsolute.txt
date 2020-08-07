@@ -7,3 +7,4 @@ C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize
 C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.exe
 C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.pdb
 C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.ChangePicMain.resources
+C:\Users\Mycomp\source\repos\ChangePicSize\ChangePicSize\obj\Debug\ChangePicSize.csproj.CoreCompileInputs.cache
