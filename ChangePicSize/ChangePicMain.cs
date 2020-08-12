@@ -289,6 +289,7 @@ namespace ChangePicSize
 
                 LiveUpdateProgressBar.Visible = true;
                 ProgressLabel.Visible = true;
+                DropSignLabel.ForeColor = Color.IndianRed;
 
                 ProgressLabel.Text = "Loading pictures...";
 
@@ -302,6 +303,7 @@ namespace ChangePicSize
                 await ConvertFilesAsync();
 
                 ProgressLabel.Text = "Done";
+                DropSignLabel.ForeColor = SystemColors.ButtonFace;
                 Thread.Sleep(1000);
                 ProgressLabel.Visible = false;
                 LiveUpdateProgressBar.Visible = false;
