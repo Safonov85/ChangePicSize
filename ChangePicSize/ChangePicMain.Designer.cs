@@ -47,12 +47,15 @@
             this.DropSignLabel = new System.Windows.Forms.Label();
             this.ChangePicOldStylePage = new System.Windows.Forms.TabPage();
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
-            this.Rotate90SettingsCheckB = new System.Windows.Forms.CheckBox();
-            this.ResolutionSettingsLabel = new System.Windows.Forms.Label();
-            this.QualitySettingsLabel = new System.Windows.Forms.Label();
-            this.FileTypeSettingsCombo = new System.Windows.Forms.ComboBox();
-            this.SavePathSettingsLabel = new System.Windows.Forms.Label();
             this.SaveSettingsButton = new System.Windows.Forms.Button();
+            this.SavePathSettingsLabel = new System.Windows.Forms.Label();
+            this.FileTypeSettingsCombo = new System.Windows.Forms.ComboBox();
+            this.QualitySettingsLabel = new System.Windows.Forms.Label();
+            this.ResolutionSettingsLabel = new System.Windows.Forms.Label();
+            this.Rotate90SettingsCheckB = new System.Windows.Forms.CheckBox();
+            this.ResSettingsTextBox = new System.Windows.Forms.TextBox();
+            this.QualitySettingsTextBox = new System.Windows.Forms.TextBox();
+            this.PathSettingsTextBox = new System.Windows.Forms.TextBox();
             this.ChangePicTabControlPage.SuspendLayout();
             this.ChangePicDragNdrop.SuspendLayout();
             this.ChangePicOldStylePage.SuspendLayout();
@@ -266,6 +269,9 @@
             // SettingsTabPage
             // 
             this.SettingsTabPage.BackColor = System.Drawing.Color.Gainsboro;
+            this.SettingsTabPage.Controls.Add(this.PathSettingsTextBox);
+            this.SettingsTabPage.Controls.Add(this.QualitySettingsTextBox);
+            this.SettingsTabPage.Controls.Add(this.ResSettingsTextBox);
             this.SettingsTabPage.Controls.Add(this.SaveSettingsButton);
             this.SettingsTabPage.Controls.Add(this.SavePathSettingsLabel);
             this.SettingsTabPage.Controls.Add(this.FileTypeSettingsCombo);
@@ -279,41 +285,15 @@
             this.SettingsTabPage.TabIndex = 2;
             this.SettingsTabPage.Text = "Settings";
             // 
-            // Rotate90SettingsCheckB
+            // SaveSettingsButton
             // 
-            this.Rotate90SettingsCheckB.AutoSize = true;
-            this.Rotate90SettingsCheckB.Location = new System.Drawing.Point(145, 289);
-            this.Rotate90SettingsCheckB.Name = "Rotate90SettingsCheckB";
-            this.Rotate90SettingsCheckB.Size = new System.Drawing.Size(106, 24);
-            this.Rotate90SettingsCheckB.TabIndex = 3;
-            this.Rotate90SettingsCheckB.Text = "Rotate 90";
-            this.Rotate90SettingsCheckB.UseVisualStyleBackColor = true;
-            // 
-            // ResolutionSettingsLabel
-            // 
-            this.ResolutionSettingsLabel.AutoSize = true;
-            this.ResolutionSettingsLabel.Location = new System.Drawing.Point(141, 160);
-            this.ResolutionSettingsLabel.Name = "ResolutionSettingsLabel";
-            this.ResolutionSettingsLabel.Size = new System.Drawing.Size(38, 20);
-            this.ResolutionSettingsLabel.TabIndex = 5;
-            this.ResolutionSettingsLabel.Text = "Res";
-            // 
-            // QualitySettingsLabel
-            // 
-            this.QualitySettingsLabel.AutoSize = true;
-            this.QualitySettingsLabel.Location = new System.Drawing.Point(141, 200);
-            this.QualitySettingsLabel.Name = "QualitySettingsLabel";
-            this.QualitySettingsLabel.Size = new System.Drawing.Size(57, 20);
-            this.QualitySettingsLabel.TabIndex = 6;
-            this.QualitySettingsLabel.Text = "Quality";
-            // 
-            // FileTypeSettingsCombo
-            // 
-            this.FileTypeSettingsCombo.FormattingEnabled = true;
-            this.FileTypeSettingsCombo.Location = new System.Drawing.Point(145, 239);
-            this.FileTypeSettingsCombo.Name = "FileTypeSettingsCombo";
-            this.FileTypeSettingsCombo.Size = new System.Drawing.Size(121, 28);
-            this.FileTypeSettingsCombo.TabIndex = 7;
+            this.SaveSettingsButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SaveSettingsButton.Location = new System.Drawing.Point(136, 413);
+            this.SaveSettingsButton.Name = "SaveSettingsButton";
+            this.SaveSettingsButton.Size = new System.Drawing.Size(162, 76);
+            this.SaveSettingsButton.TabIndex = 9;
+            this.SaveSettingsButton.Text = "SAVE";
+            this.SaveSettingsButton.UseVisualStyleBackColor = false;
             // 
             // SavePathSettingsLabel
             // 
@@ -324,15 +304,67 @@
             this.SavePathSettingsLabel.TabIndex = 8;
             this.SavePathSettingsLabel.Text = "Save Path";
             // 
-            // SaveSettingsButton
+            // FileTypeSettingsCombo
             // 
-            this.SaveSettingsButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.SaveSettingsButton.Location = new System.Drawing.Point(136, 413);
-            this.SaveSettingsButton.Name = "SaveSettingsButton";
-            this.SaveSettingsButton.Size = new System.Drawing.Size(162, 76);
-            this.SaveSettingsButton.TabIndex = 9;
-            this.SaveSettingsButton.Text = "SAVE";
-            this.SaveSettingsButton.UseVisualStyleBackColor = false;
+            this.FileTypeSettingsCombo.FormattingEnabled = true;
+            this.FileTypeSettingsCombo.Items.AddRange(new object[] {
+            ".jpg",
+            ".png",
+            ".gif",
+            "."});
+            this.FileTypeSettingsCombo.Location = new System.Drawing.Point(145, 239);
+            this.FileTypeSettingsCombo.Name = "FileTypeSettingsCombo";
+            this.FileTypeSettingsCombo.Size = new System.Drawing.Size(121, 28);
+            this.FileTypeSettingsCombo.TabIndex = 7;
+            // 
+            // QualitySettingsLabel
+            // 
+            this.QualitySettingsLabel.AutoSize = true;
+            this.QualitySettingsLabel.Location = new System.Drawing.Point(141, 200);
+            this.QualitySettingsLabel.Name = "QualitySettingsLabel";
+            this.QualitySettingsLabel.Size = new System.Drawing.Size(57, 20);
+            this.QualitySettingsLabel.TabIndex = 6;
+            this.QualitySettingsLabel.Text = "Quality";
+            // 
+            // ResolutionSettingsLabel
+            // 
+            this.ResolutionSettingsLabel.AutoSize = true;
+            this.ResolutionSettingsLabel.Location = new System.Drawing.Point(141, 160);
+            this.ResolutionSettingsLabel.Name = "ResolutionSettingsLabel";
+            this.ResolutionSettingsLabel.Size = new System.Drawing.Size(38, 20);
+            this.ResolutionSettingsLabel.TabIndex = 5;
+            this.ResolutionSettingsLabel.Text = "Res";
+            // 
+            // Rotate90SettingsCheckB
+            // 
+            this.Rotate90SettingsCheckB.AutoSize = true;
+            this.Rotate90SettingsCheckB.Location = new System.Drawing.Point(145, 289);
+            this.Rotate90SettingsCheckB.Name = "Rotate90SettingsCheckB";
+            this.Rotate90SettingsCheckB.Size = new System.Drawing.Size(106, 24);
+            this.Rotate90SettingsCheckB.TabIndex = 3;
+            this.Rotate90SettingsCheckB.Text = "Rotate 90";
+            this.Rotate90SettingsCheckB.UseVisualStyleBackColor = true;
+            // 
+            // ResSettingsTextBox
+            // 
+            this.ResSettingsTextBox.Location = new System.Drawing.Point(185, 157);
+            this.ResSettingsTextBox.Name = "ResSettingsTextBox";
+            this.ResSettingsTextBox.Size = new System.Drawing.Size(100, 26);
+            this.ResSettingsTextBox.TabIndex = 10;
+            // 
+            // QualitySettingsTextBox
+            // 
+            this.QualitySettingsTextBox.Location = new System.Drawing.Point(204, 200);
+            this.QualitySettingsTextBox.Name = "QualitySettingsTextBox";
+            this.QualitySettingsTextBox.Size = new System.Drawing.Size(100, 26);
+            this.QualitySettingsTextBox.TabIndex = 11;
+            // 
+            // PathSettingsTextBox
+            // 
+            this.PathSettingsTextBox.Location = new System.Drawing.Point(229, 327);
+            this.PathSettingsTextBox.Name = "PathSettingsTextBox";
+            this.PathSettingsTextBox.Size = new System.Drawing.Size(359, 26);
+            this.PathSettingsTextBox.TabIndex = 12;
             // 
             // ChangePicMain
             // 
@@ -381,6 +413,9 @@
         private System.Windows.Forms.ComboBox FileTypeSettingsCombo;
         private System.Windows.Forms.Button SaveSettingsButton;
         private System.Windows.Forms.Label SavePathSettingsLabel;
+        private System.Windows.Forms.TextBox PathSettingsTextBox;
+        private System.Windows.Forms.TextBox QualitySettingsTextBox;
+        private System.Windows.Forms.TextBox ResSettingsTextBox;
     }
 }
 
