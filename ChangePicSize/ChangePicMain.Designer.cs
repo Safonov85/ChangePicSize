@@ -47,15 +47,15 @@
             this.DropSignLabel = new System.Windows.Forms.Label();
             this.ChangePicOldStylePage = new System.Windows.Forms.TabPage();
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
+            this.PathSettingsTextBox = new System.Windows.Forms.TextBox();
+            this.QualitySettingsTextBox = new System.Windows.Forms.TextBox();
+            this.ResSettingsTextBox = new System.Windows.Forms.TextBox();
             this.SaveSettingsButton = new System.Windows.Forms.Button();
             this.SavePathSettingsLabel = new System.Windows.Forms.Label();
             this.FileTypeSettingsCombo = new System.Windows.Forms.ComboBox();
             this.QualitySettingsLabel = new System.Windows.Forms.Label();
             this.ResolutionSettingsLabel = new System.Windows.Forms.Label();
             this.Rotate90SettingsCheckB = new System.Windows.Forms.CheckBox();
-            this.ResSettingsTextBox = new System.Windows.Forms.TextBox();
-            this.QualitySettingsTextBox = new System.Windows.Forms.TextBox();
-            this.PathSettingsTextBox = new System.Windows.Forms.TextBox();
             this.ChangePicTabControlPage.SuspendLayout();
             this.ChangePicDragNdrop.SuspendLayout();
             this.ChangePicOldStylePage.SuspendLayout();
@@ -285,6 +285,30 @@
             this.SettingsTabPage.TabIndex = 2;
             this.SettingsTabPage.Text = "Settings";
             // 
+            // PathSettingsTextBox
+            // 
+            this.PathSettingsTextBox.Location = new System.Drawing.Point(229, 327);
+            this.PathSettingsTextBox.Name = "PathSettingsTextBox";
+            this.PathSettingsTextBox.Size = new System.Drawing.Size(359, 26);
+            this.PathSettingsTextBox.TabIndex = 12;
+            this.PathSettingsTextBox.TextChanged += new System.EventHandler(this.PathSettingsTextBox_TextChanged);
+            // 
+            // QualitySettingsTextBox
+            // 
+            this.QualitySettingsTextBox.Location = new System.Drawing.Point(204, 200);
+            this.QualitySettingsTextBox.Name = "QualitySettingsTextBox";
+            this.QualitySettingsTextBox.Size = new System.Drawing.Size(100, 26);
+            this.QualitySettingsTextBox.TabIndex = 11;
+            this.QualitySettingsTextBox.TextChanged += new System.EventHandler(this.QualitySettingsTextBox_TextChanged);
+            // 
+            // ResSettingsTextBox
+            // 
+            this.ResSettingsTextBox.Location = new System.Drawing.Point(185, 157);
+            this.ResSettingsTextBox.Name = "ResSettingsTextBox";
+            this.ResSettingsTextBox.Size = new System.Drawing.Size(100, 26);
+            this.ResSettingsTextBox.TabIndex = 10;
+            this.ResSettingsTextBox.TextChanged += new System.EventHandler(this.ResSettingsTextBox_TextChanged);
+            // 
             // SaveSettingsButton
             // 
             this.SaveSettingsButton.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -344,27 +368,6 @@
             this.Rotate90SettingsCheckB.TabIndex = 3;
             this.Rotate90SettingsCheckB.Text = "Rotate 90";
             this.Rotate90SettingsCheckB.UseVisualStyleBackColor = true;
-            // 
-            // ResSettingsTextBox
-            // 
-            this.ResSettingsTextBox.Location = new System.Drawing.Point(185, 157);
-            this.ResSettingsTextBox.Name = "ResSettingsTextBox";
-            this.ResSettingsTextBox.Size = new System.Drawing.Size(100, 26);
-            this.ResSettingsTextBox.TabIndex = 10;
-            // 
-            // QualitySettingsTextBox
-            // 
-            this.QualitySettingsTextBox.Location = new System.Drawing.Point(204, 200);
-            this.QualitySettingsTextBox.Name = "QualitySettingsTextBox";
-            this.QualitySettingsTextBox.Size = new System.Drawing.Size(100, 26);
-            this.QualitySettingsTextBox.TabIndex = 11;
-            // 
-            // PathSettingsTextBox
-            // 
-            this.PathSettingsTextBox.Location = new System.Drawing.Point(229, 327);
-            this.PathSettingsTextBox.Name = "PathSettingsTextBox";
-            this.PathSettingsTextBox.Size = new System.Drawing.Size(359, 26);
-            this.PathSettingsTextBox.TabIndex = 12;
             // 
             // ChangePicMain
             // 

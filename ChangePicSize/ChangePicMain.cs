@@ -481,5 +481,20 @@ namespace ChangePicSize
                 }
             });
         }
+
+        private void ResSettingsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QualitySettingsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PathSettingsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("yes type");
+        }
     }
 }
