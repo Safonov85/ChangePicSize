@@ -56,6 +56,7 @@
             this.QualitySettingsLabel = new System.Windows.Forms.Label();
             this.ResolutionSettingsLabel = new System.Windows.Forms.Label();
             this.Rotate90SettingsCheckB = new System.Windows.Forms.CheckBox();
+            this.SourceCodeLabel = new System.Windows.Forms.Label();
             this.ChangePicTabControlPage.SuspendLayout();
             this.ChangePicDragNdrop.SuspendLayout();
             this.ChangePicOldStylePage.SuspendLayout();
@@ -269,6 +270,7 @@
             // SettingsTabPage
             // 
             this.SettingsTabPage.BackColor = System.Drawing.Color.Gainsboro;
+            this.SettingsTabPage.Controls.Add(this.SourceCodeLabel);
             this.SettingsTabPage.Controls.Add(this.PathSettingsTextBox);
             this.SettingsTabPage.Controls.Add(this.QualitySettingsTextBox);
             this.SettingsTabPage.Controls.Add(this.ResSettingsTextBox);
@@ -287,7 +289,7 @@
             // 
             // PathSettingsTextBox
             // 
-            this.PathSettingsTextBox.Location = new System.Drawing.Point(229, 327);
+            this.PathSettingsTextBox.Location = new System.Drawing.Point(233, 277);
             this.PathSettingsTextBox.Name = "PathSettingsTextBox";
             this.PathSettingsTextBox.Size = new System.Drawing.Size(359, 26);
             this.PathSettingsTextBox.TabIndex = 12;
@@ -295,7 +297,7 @@
             // 
             // QualitySettingsTextBox
             // 
-            this.QualitySettingsTextBox.Location = new System.Drawing.Point(204, 200);
+            this.QualitySettingsTextBox.Location = new System.Drawing.Point(208, 150);
             this.QualitySettingsTextBox.Name = "QualitySettingsTextBox";
             this.QualitySettingsTextBox.Size = new System.Drawing.Size(100, 26);
             this.QualitySettingsTextBox.TabIndex = 11;
@@ -303,7 +305,7 @@
             // 
             // ResSettingsTextBox
             // 
-            this.ResSettingsTextBox.Location = new System.Drawing.Point(185, 157);
+            this.ResSettingsTextBox.Location = new System.Drawing.Point(189, 107);
             this.ResSettingsTextBox.Name = "ResSettingsTextBox";
             this.ResSettingsTextBox.Size = new System.Drawing.Size(100, 26);
             this.ResSettingsTextBox.TabIndex = 10;
@@ -312,7 +314,7 @@
             // SaveSettingsButton
             // 
             this.SaveSettingsButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.SaveSettingsButton.Location = new System.Drawing.Point(136, 413);
+            this.SaveSettingsButton.Location = new System.Drawing.Point(140, 363);
             this.SaveSettingsButton.Name = "SaveSettingsButton";
             this.SaveSettingsButton.Size = new System.Drawing.Size(162, 76);
             this.SaveSettingsButton.TabIndex = 9;
@@ -322,7 +324,7 @@
             // SavePathSettingsLabel
             // 
             this.SavePathSettingsLabel.AutoSize = true;
-            this.SavePathSettingsLabel.Location = new System.Drawing.Point(141, 330);
+            this.SavePathSettingsLabel.Location = new System.Drawing.Point(145, 280);
             this.SavePathSettingsLabel.Name = "SavePathSettingsLabel";
             this.SavePathSettingsLabel.Size = new System.Drawing.Size(82, 20);
             this.SavePathSettingsLabel.TabIndex = 8;
@@ -336,7 +338,7 @@
             ".png",
             ".gif",
             "."});
-            this.FileTypeSettingsCombo.Location = new System.Drawing.Point(145, 239);
+            this.FileTypeSettingsCombo.Location = new System.Drawing.Point(149, 189);
             this.FileTypeSettingsCombo.Name = "FileTypeSettingsCombo";
             this.FileTypeSettingsCombo.Size = new System.Drawing.Size(121, 28);
             this.FileTypeSettingsCombo.TabIndex = 7;
@@ -344,7 +346,7 @@
             // QualitySettingsLabel
             // 
             this.QualitySettingsLabel.AutoSize = true;
-            this.QualitySettingsLabel.Location = new System.Drawing.Point(141, 200);
+            this.QualitySettingsLabel.Location = new System.Drawing.Point(145, 150);
             this.QualitySettingsLabel.Name = "QualitySettingsLabel";
             this.QualitySettingsLabel.Size = new System.Drawing.Size(57, 20);
             this.QualitySettingsLabel.TabIndex = 6;
@@ -353,7 +355,7 @@
             // ResolutionSettingsLabel
             // 
             this.ResolutionSettingsLabel.AutoSize = true;
-            this.ResolutionSettingsLabel.Location = new System.Drawing.Point(141, 160);
+            this.ResolutionSettingsLabel.Location = new System.Drawing.Point(145, 110);
             this.ResolutionSettingsLabel.Name = "ResolutionSettingsLabel";
             this.ResolutionSettingsLabel.Size = new System.Drawing.Size(38, 20);
             this.ResolutionSettingsLabel.TabIndex = 5;
@@ -362,12 +364,24 @@
             // Rotate90SettingsCheckB
             // 
             this.Rotate90SettingsCheckB.AutoSize = true;
-            this.Rotate90SettingsCheckB.Location = new System.Drawing.Point(145, 289);
+            this.Rotate90SettingsCheckB.Location = new System.Drawing.Point(149, 239);
             this.Rotate90SettingsCheckB.Name = "Rotate90SettingsCheckB";
             this.Rotate90SettingsCheckB.Size = new System.Drawing.Size(106, 24);
             this.Rotate90SettingsCheckB.TabIndex = 3;
             this.Rotate90SettingsCheckB.Text = "Rotate 90";
             this.Rotate90SettingsCheckB.UseVisualStyleBackColor = true;
+            // 
+            // SourceCodeLabel
+            // 
+            this.SourceCodeLabel.AutoSize = true;
+            this.SourceCodeLabel.BackColor = System.Drawing.Color.DimGray;
+            this.SourceCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SourceCodeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SourceCodeLabel.Location = new System.Drawing.Point(23, 490);
+            this.SourceCodeLabel.Name = "SourceCodeLabel";
+            this.SourceCodeLabel.Size = new System.Drawing.Size(648, 29);
+            this.SourceCodeLabel.TabIndex = 13;
+            this.SourceCodeLabel.Text = "Source Code: https://github.com/Safonov85/ChangePicSize";
             // 
             // ChangePicMain
             // 
@@ -419,6 +433,7 @@
         private System.Windows.Forms.TextBox PathSettingsTextBox;
         private System.Windows.Forms.TextBox QualitySettingsTextBox;
         private System.Windows.Forms.TextBox ResSettingsTextBox;
+        private System.Windows.Forms.Label SourceCodeLabel;
     }
 }
 
