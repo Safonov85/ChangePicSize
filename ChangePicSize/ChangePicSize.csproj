@@ -60,6 +60,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResizePicture.cs" />
+    <Compile Include="SettingsChangePic.cs" />
     <EmbeddedResource Include="ChangePicMain.resx">
       <DependentUpon>ChangePicMain.cs</DependentUpon>
     </EmbeddedResource>
