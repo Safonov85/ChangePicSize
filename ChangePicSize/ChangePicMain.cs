@@ -47,7 +47,8 @@ namespace ChangePicSize
             // Settings Load
             rotateRightCheckBox.Checked = Settings.Default.Rotate90Right;
         }
-
+        
+        // Manual loading process
         private void LoadPicButton_Click(object sender, EventArgs e)
         {
             if(PicturesListbox.Items.Count > 0)
@@ -128,7 +129,8 @@ namespace ChangePicSize
             //PicturesListbox.Items.Add("Item num" + item);
 
         }
-
+        
+        // Manual loading process
         void LoadImagesIntoList(OpenFileDialog dialog, int item)
         {
 
@@ -147,7 +149,8 @@ namespace ChangePicSize
             //"Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" +
             //"All files (*.*)|*.*";
         }
-
+        
+        // Manual loading process
         private void ResizePicturesButton_Click(object sender, EventArgs e)
         {
             if(pictureList.Count == 0)
@@ -253,12 +256,14 @@ namespace ChangePicSize
         {
 
         }
-
+        
         private void ChangePicDragNdrop_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
         }
 
+
+        // Main Async Process of Load And Convert
         private async void ChangePicDragNdrop_DragDrop(object sender, DragEventArgs e)
         {
             if (filesProccessed == false)
