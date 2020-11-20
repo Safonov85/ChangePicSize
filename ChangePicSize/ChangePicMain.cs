@@ -238,6 +238,7 @@ namespace ChangePicSize
 
         private void AboutButton_Click(object sender, EventArgs e)
         {
+            // DISCLAIMER 
             MessageBox.Show("Made by Mikhail Safonov 2020. The maker of this app bears no responsibility for any damage that the use of this software may cause.");
         }
 
