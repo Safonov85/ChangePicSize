@@ -339,6 +339,7 @@ namespace ChangePicSize
         }
 
         // LOADING PICTURE FILES
+        // Needs limit on amout files loaded (WIP) 
         public async Task LoadfilesAsync(string[] files)
         {
             // IProgress<LiveReport> progress // parameter
